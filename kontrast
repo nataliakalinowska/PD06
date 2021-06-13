@@ -1,16 +1,17 @@
-package PD06;
+package pd6;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 
-public class Lab_6 {
+
+public class PD6 {
     BufferedImage obraz;
     private int szerokosc;
     private int wysokosc;
     
-    public Lab_6()
+    public PD6()
     {
         try {
             File wejscie = new File("rzym.jpg");
@@ -58,8 +59,10 @@ public class Lab_6 {
 
  } catch (IOException e) {}
     }
-    public static void main(String[] args) throws Exception {
-       PD06 obj = new PD06();
+
+    
+    public static void main(String[] args) {
+        PD6 obj = new PD6();
     }
     
 }
