@@ -1,0 +1,65 @@
+package PD06;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
+
+public class Lab_6 {
+    BufferedImage obraz;
+    private int szerokosc;
+    private int wysokosc;
+    
+    public Lab_6()
+    {
+        try {
+            File wejscie = new File("rzym.jpg");
+            obraz = ImageIO.read(wejscie);
+            this.szerokosc = obraz.getWidth();
+            this.wysokosc = obraz.getHeight();
+
+
+            for(int i=0; i<this.wysokosc; i++){
+                for(int j=0; j<this.szerokosc; j++){
+
+                Color c = new Color(obraz.getRGB(j, i));
+                        int red = (int)(c.getRed());
+                        int green = (int)(c.getGreen());
+                        int blue = (int)(c.getBlue());
+
+                        int x, y, z;
+ 
+                            x = 0;
+                            y = 0;
+                            z = 0;
+
+                if ( i>=0 && i<=1626 && j>=0 && j<=1080 ) 
+                {
+                    x = 90;
+                    y = 10; 
+                    z = -30; 
+                }
+            if (red + x>=0 && red + x <=255) red = red + x;
+            else red = red;
+
+            if (green + y>=0 && green + y <=255) green = green + y;
+            else green = green;
+
+            if (blue + z>=0 && blue + z <=255) blue = blue + z;
+            else blue = blue;
+     
+            Color newColor = new Color(red, green,blue);
+            obraz.setRGB(j,i,newColor.getRGB());
+        } 
+ }
+            
+ File ouptut = new File("zmiana.jpg");
+ ImageIO.write(obraz, "jpg", ouptut);
+
+ } catch (IOException e) {}
+    }
+    public static void main(String[] args) throws Exception {
+       PD06 obj = new PD06();
+    }
+    
+}
